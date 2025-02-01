@@ -1,17 +1,18 @@
 # This repository is synced
+This repository follows the template.
+## Metadata
+- Name: 'Pythmark'
+- Author: Matthew A.
+- Purpose: Used for adding watermarks to images in batch mode
+- Format: PySide6/Flatpak and CLI
+- License: [GLPv3](https://doc.qt.io/qtforpython-6/licenses.html), [details from QT](https://www.qt.io/licensing/open-source-lgpl-obligations)
+- Author: Matthew A.
 
-# Pythmark
-The in-progress python watermark tool for attaching watermarks and ribbon styled logos to user's pictures.
+## Concept
+- Process images in the 'input' folder, produce modified images in the 'output' folder. 
+- Adjust settings within the 'config' folder or using CLI.
 
-## Changelog TO-DO/IN-PROGRESS
-- basic watermark functionality (DONE)
-- basic ribbon fuctionality (TO-DO)
-- basic mixed watermark/ribbon functionality (TO-DO)
+## Demo
+![Preview](source/output/pengu.png)
 
-### Code cleanup
-- splitting code into libraries (TO-DO)
-- reworking **ini** file (TO-DO)
-
-## Future plans
-- implementing GUI
-- creating binary executable
+tl;dr "community edition" QT binding.<br>
