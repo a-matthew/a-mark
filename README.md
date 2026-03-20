@@ -15,12 +15,18 @@
     - https://pypi.org/project/black/
 
 ### Installation:
-  1. `python3.14 -m venv {path}/a-mark/venv-3.14`
-  2. `cd {path}/a-mark`
-  3. `source venv-3.14/bin/activate`
-  4. `pip install --upgrade pip`
-  5. `pip install -r requirements.txt`
-  6. double check with `which python` (Linux)
+  - Windows
+    - `cd "C:\Users\{User}\AppData\Local\Programs\Python\Launcher"`
+    - `.\py.exe -3.14 -m venv "{path}/a-mark/venv-3.14"` <sub>suggested</sub>
+    - everything below
+  - Linux
+    - `python3.14 -m venv {path}/a-mark/venv-3.14` <sub>suggested</sub>
+    - everything below
+  1. `cd {path}/a-mark`
+  2. `source venv-3.14/bin/activate`
+  3. `pip install --upgrade pip`
+  4. `pip install -r requirements.txt`
+  5. double check with `which python` (Linux)
   
 ### Usage:
   - `a-mark/main.py`
