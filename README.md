@@ -29,10 +29,10 @@
 
 ## Example
 ### Watermark on top of the image
-<img src="./assets/Example1.jpg" width=50% height=50%>
+<img src="./a-mark/tests/output/test_01_effect_top.jpg" width=50% height=50%>
 
 ### Watermark in the center of the image ('interwoven' pattern)
-<img src="./assets/Example2.jpg" width=50% height=50%>
+<img src="./a-mark/tests/output/test_02_effect_center.jpg" width=50% height=50%>
 
 ### Watermark at the bottom of the image
-<img src="./assets/Example3.jpg" width=50% height=50%>
+<img src="./a-mark/tests/output/test_03_effect_bottom.jpg" width=50% height=50%>
