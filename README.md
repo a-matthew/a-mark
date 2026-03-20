@@ -1,4 +1,3 @@
-# This repository is synced
 ## Metadata
 - Name: 'a-mark'.
 - Author: a-matthew/Mateusz A.
@@ -6,7 +5,6 @@
 - Format: CLI (planned UI/Flatpak).
 - License: 
   - [Project](LICENSE.txt)
-  - ~~[QT](https://doc.qt.io/qtforpython-6/licenses.html)/[details from QT](https://www.qt.io/licensing/open-source-lgpl-obligations)~~ (if chosen)
 
 ## Setup
 ### Dependencies:
@@ -25,7 +23,7 @@
 ### Usage:
   - `a-mark/main.py`
     - configured using 'config.ini' file, or used via CLI arguments
-
+  - `a-mark/tests.py`
 
 ## Example
 ### Watermark on top of the image
