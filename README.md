@@ -3,7 +3,7 @@
 - Author: a-matthew/Mateusz A.
 - Purpose: Adding watermarks to images (batch mode by default).
 - Format: CLI (planned UI/Flatpak).
-- License: 
+- License:
   - [This project](LICENSE)
 
 ## Setup
@@ -27,11 +27,17 @@
   3. `pip install --upgrade pip`
   4. `pip install -r requirements.txt`
   5. double check with `which python` (Linux)
-  
+
 ### Usage:
-  - `a-mark/main.py`
-    - configured using 'config.ini' file, or used via CLI arguments
-  - `a-mark/tests.py`
+  - project
+    - `a-mark/main.py`
+      - configured using 'config.ini' file, or used via CLI arguments
+  - local tests
+    - `a-mark/tests.py`
+      - compare test results manually
+  - local CI
+    - `pre-commit run --all-files`
+      - for local linting
 
 ## Example
 ### Watermark on top of the image
