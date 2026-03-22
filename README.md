@@ -11,8 +11,11 @@
   - Version: __Python 3.14__
   - Manager: __venv__
     - https://docs.python.org/3/library/venv.html
-  - Formatter: __Black__
-    - https://pypi.org/project/black/
+  - Standards:
+    - __Black__
+      - https://pypi.org/project/black/
+    - __Flake8__
+      - https://pypi.org/project/flake8/
 
 ### Installation:
   - Windows
@@ -25,7 +28,7 @@
   1. `cd {path}/a-mark`
   2. `source venv-3.14/bin/activate`
   3. `pip install --upgrade pip`
-  4. `pip install -r requirements.txt`
+  4. `pip install .`
   5. double check with `which python` (Linux)
 
 ### Usage:

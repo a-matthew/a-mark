@@ -1,0 +1,5 @@
+[flake8]
+# flake8: noqa https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length
+# flake8: noqa https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#minimal-configuration
+max-line-length = 88
+extend-ignore = E203,E701

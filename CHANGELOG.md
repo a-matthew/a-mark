@@ -18,19 +18,23 @@ Template
 
 ## [0.3.0] - 2026-03-22
 ### Added
-- `pre-commit` framework-based formatting and linting hooks,
-- `CHANGELOG.md` file.
-- added basic CI pipeline,
+- new `pre-commit` framework-based formatting and linting hooks,
+- new `flake8`, `isort` pre-commit hooks,
+- new `pyproject.toml` and `CHANGELOG.md` files.
+- new basic CI pipelines,
 ### Changed
+- enforced `flake8` recommendations,
 - updated documentation.
+### Removed
+- removed `requirements.txt` in favour of .toml file project configuration.
 
 ## [0.2.0] - 2026-03-20
 ### Added
-- added type casting for config,
-- added offset configuration ('top' effect down towards the middle, 'bottom' effect up towards the middle.),
-- added text spacing ('top' effect down towards the middle, 'bottom' effect up - towards the middle, 'center' effect 'interwoven'.),
-- added docstring function descriptions,
-- added custom CLI-based tests.
+- new type casting checks for config object,
+- new offset configuration ('top' effect down towards the middle, 'bottom' effect up towards the middle.),
+- new text spacing configuration ('top' effect down towards the middle, 'bottom' effect up - towards the middle, 'center' effect 'interwoven'.),
+- new docstring function descriptions,
+- new custom CLI-based tests.
 ### Changed
 - improved error handling,
 - improved line wrapping (by reversing lists of strings for the 'bottom' effect.) ,
@@ -39,9 +43,9 @@ Template
 
 ## [0.1.0] - 2025-02-02
 ### Added
-- added venv-based environment setup,
-- added config.ini file,
-- added `argparse` CLI interface.
+- new venv-based environment setup,
+- new config.ini file,
+- new `argparse` CLI interface.
 ### Changed
 - reworked the entire code into a Python script,
 - cleaned up the project structure,

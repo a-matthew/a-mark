@@ -7,10 +7,13 @@
 # https://docs.python.org/3/library/stdtypes.html
 # ================================
 
-import os, subprocess, argparse
+import argparse
+
+# Built-in
+import os
+import subprocess
 
 DEBUG = 1
-ERRORS = 0
 
 AMARK_TEST_SUITES = [
     "test_01_effect_top.ini",
@@ -30,19 +33,19 @@ def config_read(
     Read configuration from argparse and default missing parameters.
     """
     try:
-        if path_amark == None:
+        if path_amark is None:
             path_amark = os.path.join(PATH_DIRECTORY_MODULE, "main.py")
         if DEBUG == 1:
             print(f"config_read|path_amark: {path_amark}")
-        if path_input == None:
+        if path_input is None:
             path_input = os.path.join(PATH_DIRECTORY_MODULE, "input/")
         if DEBUG == 1:
             print(f"config_read|path_input: {path_input}")
-        if path_output == None:
+        if path_output is None:
             path_output = os.path.join(PATH_DIRECTORY_MODULE, "tests/output")
         if DEBUG == 1:
             print(f"config_read|path_output: {path_output}")
-        if path_tests == None:
+        if path_tests is None:
             path_tests = os.path.join(PATH_DIRECTORY_MODULE, "tests/")
         if DEBUG == 1:
             print(f"config_read|path_tests: {path_tests}")
@@ -59,11 +62,10 @@ def config_read(
 
 
 def amark_run(path_amark, path_config, path_input, path_output, name_output) -> None:
-    global ERRORS
     try:
         # print(f"amark_run|amark_test_suite: {amark_test_suite}")
         amark_command = [
-            f"python",
+            "python",
             f"{path_amark}",
             f"--path_config={path_config}",
             f"--path_input={path_input}",

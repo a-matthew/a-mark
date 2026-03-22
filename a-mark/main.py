@@ -9,16 +9,19 @@
 # https://pillow.readthedocs.io/en/stable/index.html
 # ================================
 
-import os, argparse, configparser, textwrap, operator
-from os.path import abspath
-from configparser import ConfigParser, RawConfigParser
+import argparse
+import operator
 
-from PIL import (
-    Image,
-    ImageFont,
-    ImageDraw,
-)
+# Built-in
+import os
+import textwrap
+from configparser import RawConfigParser  # , ConfigParser
+from os.path import abspath
+
 import numpy
+
+# Custom
+from PIL import Image, ImageDraw, ImageFont
 
 DEBUG = 1
 PATH_DIRECTORY_MODULE = os.path.split(os.path.realpath(__file__))[0]
@@ -60,7 +63,10 @@ def effect_coordinates_calculate(
             print(e)
     if DEBUG == 1:
         print(
-            f"effect_coordinates_calculate|effect_coordinates[0]: {effect_coordinates[0]}, effect_coordinates[1]: {effect_coordinates[1]}"
+            f"effect_coordinates_calculate|effect_coordinates[0]: {effect_coordinates[0]}"  # noqa: E501
+        )
+        print(
+            f"effect_coordinates_calculate|effect_coordinates[1]: {effect_coordinates[1]}"  # noqa: E501
         )
     return effect_coordinates
 
@@ -97,9 +103,8 @@ def effect_offset_calculate(
             print("effect_offset_calculate: failure!")
             print(e)
     if DEBUG == 1:
-        print(
-            f"effect_offset_calculate|effect_offset[0]: {effect_offset[0]}, effect_offset_calculate||effect_offset[1]: {effect_offset[1]}"
-        )
+        print(f"effect_offset_calculate|effect_offset[0]: {effect_offset[0]}")
+        print(f"effect_offset_calculate|effect_offset[1]: {effect_offset[1]}")
     return tuple(effect_offset)
 
 
@@ -182,99 +187,99 @@ def config_read(
     """
     config = RawConfigParser()
     try:
-        if path_config == None:
+        if path_config is None:
             path_config = os.path.join(PATH_DIRECTORY_MODULE, "config.ini")
         if DEBUG == 1:
             print(f"config_read|path_config: {path_config}")
         config.read(path_config)
-        if path_input == None:
+        if path_input is None:
             path_input = (
                 os.path.join(PATH_DIRECTORY_MODULE, config.get("path", "PATH_INPUT"))
-                if config.get("path", "PATH_INPUT") != None
+                if config.get("path", "PATH_INPUT") is not None
                 else os.path.join(PATH_DIRECTORY_MODULE, "input/")
             )
         if DEBUG == 1:
             print(f"config_read|path_input: {path_input}")
-        if path_output == None:
+        if path_output is None:
             path_output = (
                 os.path.join(PATH_DIRECTORY_MODULE, config.get("path", "PATH_OUTPUT"))
-                if config.get("path", "PATH_OUTPUT") != None
+                if config.get("path", "PATH_OUTPUT") is not None
                 else os.path.join(PATH_DIRECTORY_MODULE, "output/")
             )
         if DEBUG == 1:
             print(f"config_read|path_output: {path_output}")
-        if name_output == None:
+        if name_output is None:
             pass
         if DEBUG == 1:
             print(f"config_read|name_output: {name_output}")
-        if effect_type == None:
+        if effect_type is None:
             effect_type = (
                 config.get("effect", "EFFECT_TYPE")
-                if config.get("effect", "EFFECT_TYPE") != None
+                if config.get("effect", "EFFECT_TYPE") is not None
                 else "horizontal"
             )
         if DEBUG == 1:
             print(f"config_read|effect_type: {effect_type}")
-        if effect_position == None:
+        if effect_position is None:
             effect_position = (
                 config.get("effect", "EFFECT_POSITION")
-                if config.get("effect", "EFFECT_POSITION") != None
+                if config.get("effect", "EFFECT_POSITION") is not None
                 else "center"
             )
         if DEBUG == 1:
             print(f"config_read|effect_position: {effect_position}")
         effect_offset_horizontal = (
             config.get("effect", "EFFECT_OFFSET_HORIZONTAL")
-            if config.get("effect", "EFFECT_OFFSET_HORIZONTAL") != None
+            if config.get("effect", "EFFECT_OFFSET_HORIZONTAL") is not None
             else 0
         )
         if DEBUG == 1:
             print(f"config_read|effect_offset_horizontal: {effect_offset_horizontal}")
         effect_offset_vertical = (
             config.get("effect", "EFFECT_OFFSET_VERTICAL")
-            if config.get("effect", "EFFECT_OFFSET_VERTICAL") != None
+            if config.get("effect", "EFFECT_OFFSET_VERTICAL") is not None
             else 0
         )
         if DEBUG == 1:
             print(f"config_read|effect_offset_vertical: {effect_offset_vertical}")
         text_size = (
             int(config.getint("text", "TEXT_SIZE"))
-            if config.getint("text", "TEXT_SIZE") != None
+            if config.getint("text", "TEXT_SIZE") is not None
             else 50
         )
         if DEBUG == 1:
             print(f"config_read|text_size: {text_size}")
         text_width_line = (
             int(config.get("text", "TEXT_WIDTH_LINE"))
-            if config.get("text", "TEXT_WIDTH_LINE") != None
+            if config.get("text", "TEXT_WIDTH_LINE") is not None
             else 20
         )
         if DEBUG == 1:
             print(f"config_read|text_width_line: {text_width_line}")
         text_spacing = (
             int(config.get("text", "TEXT_SPACING"))
-            if config.get("text", "TEXT_SPACING") != None
+            if config.get("text", "TEXT_SPACING") is not None
             else 5
         )
         if DEBUG == 1:
             print(f"config_read|text_spacing: {text_spacing}")
         text_font_family = (
             config.get("text", "TEXT_FONT_FAMILY")
-            if config.get("text", "TEXT_FONT_FAMILY") != None
+            if config.get("text", "TEXT_FONT_FAMILY") is not None
             else "/usr/share/fonts/qualitype/QTGaromand-Bold.otf"
         )
         if DEBUG == 1:
             print(f"config_read|text_font_family: {text_font_family}")
         text_color = (
             config.get("text", "TEXT_COLOR")
-            if config.get("text", "TEXT_COLOR") != None
+            if config.get("text", "TEXT_COLOR") is not None
             else "255, 76, 48, 128"
         )
         if DEBUG == 1:
             print(f"config_read|text_color: {text_color}")
         text_caption = (
             config.get("text", "TEXT_CAPTION")
-            if config.get("text", "TEXT_CAPTION") != None
+            if config.get("text", "TEXT_CAPTION") is not None
             else "LoremIpsum"
         )
         if DEBUG == 1:
@@ -333,7 +338,7 @@ def image_write(config, list_images):
     try:
         image_font = ImageFont.truetype(config["text_font_family"], config["text_size"])
     except Exception as e:
-        print(f"image_write|font_read: failure!")
+        print("image_write|font_read: failure!")
         print(e)
     for tuple_image in list_images:
         image_draw = ImageDraw.Draw(tuple_image[0])
@@ -356,7 +361,7 @@ def image_write(config, list_images):
                 )
                 image_draw.text(
                     xy=tuple(
-                        map(  # Maps can call functions https://docs.python.org/3/library/functions.html#map
+                        map(  # noqa: E501 Maps can call functions https://docs.python.org/3/library/functions.html#map
                             operator.add,
                             numpy.array(
                                 effect_coordinates_calculate(
@@ -412,70 +417,70 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--path_config",
-        help="(Optional) Path of the config file (module's config.ini used by default!) (str).",
+        help="(Optional) Path of the config file (module's config.ini used by default!) (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--path_input",
-        help="(Optional) Path of the input directory. All images in ['.jpg', '.png'] format will be processed (str).",
+        help="(Optional) Path of the input directory. All images in ['.jpg', '.png'] format will be processed (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--path_output",
-        help="(Optional) Path of the output directory (str).",
+        help="(Optional) Path of the output directory (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--name_output",
-        help="(Optional) Name of the output file (by default the same as original) (str).",
+        help="(Optional) Name of the output file (by default the same as original) (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--effect_type",
-        help="(Optional) Type of the effect ['horizontal', 'diagonal'] (str).",
+        help="(Optional) Type of the effect ['horizontal', 'diagonal'] (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--effect_position",
-        help="(Optional) Position of the effect ['bottom', 'center', 'top'] (str).",
+        help="(Optional) Position of the effect ['bottom', 'center', 'top'] (str).",  # noqa: E501
         type=str,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--effect_offset_horizontal",
-        help="(Optional) Horizontal offset of the effect (int).",
+        help="(Optional) Horizontal offset of the effect (int).",  # noqa: E501
         type=int,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--effect_offset_vertical",
-        help="(Optional) Vertical offset of the effect (int).",
+        help="(Optional) Vertical offset of the effect (int).",  # noqa: E501
         type=int,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--text_width_line",
-        help="(Optional) Width of the text line, counted in characters per line (int).",
+        help="(Optional) Width of the text line, counted in characters per line (int).",  # noqa: E501
         type=int,
         nargs="?",
         default=None,
     )
     parser.add_argument(
         "--text_spacing",
-        help="(Optional) Spacing of the text multi-line, counted in pixels between the lines (int).",
+        help="(Optional) Spacing of the text multi-line, counted in pixels between the lines (int).",  # noqa: E501
         type=int,
         nargs="?",
         default=None,
