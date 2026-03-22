@@ -7,11 +7,13 @@
 # https://docs.python.org/3/library/stdtypes.html
 # ================================
 
-import argparse
+# 1st built-in, 2nd custom
 
-# Built-in
+import argparse
 import os
 import subprocess
+
+# isort: split
 
 DEBUG = 1
 
@@ -62,6 +64,9 @@ def config_read(
 
 
 def amark_run(path_amark, path_config, path_input, path_output, name_output) -> None:
+    """
+    Run 'a-mark' with CLI parameters.
+    """
     try:
         # print(f"amark_run|amark_test_suite: {amark_test_suite}")
         amark_command = [
@@ -91,6 +96,9 @@ def amark_run(path_amark, path_config, path_input, path_output, name_output) -> 
 def amark_test_suite_run(
     amark_test_suite, path_tests, path_amark, path_input, path_output, name_output
 ) -> None:
+    """
+    Check if test suite exists, then run it.
+    """
     try:
         for test_suite in os.listdir(path_tests):
             if test_suite.endswith(amark_test_suite):
@@ -108,7 +116,10 @@ def amark_test_suite_run(
         print(e)
 
 
-def amark_test(config) -> None:
+def amark_test_run(config) -> None:
+    """
+    Run tests for 'a-mark'.
+    """
     for amark_test_suite in AMARK_TEST_SUITES:
         amark_test_suite_run(
             amark_test_suite,
@@ -160,4 +171,4 @@ if __name__ == "__main__":
         args.path_output,
         args.path_tests,
     )
-    amark_test(config)
+    amark_test_run(config)

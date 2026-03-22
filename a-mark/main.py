@@ -9,18 +9,18 @@
 # https://pillow.readthedocs.io/en/stable/index.html
 # ================================
 
+# 1st built-in, 2nd custom
+
 import argparse
 import operator
-
-# Built-in
 import os
 import textwrap
 from configparser import RawConfigParser  # , ConfigParser
 from os.path import abspath
 
-import numpy
+# isort: split
 
-# Custom
+import numpy
 from PIL import Image, ImageDraw, ImageFont
 
 DEBUG = 1
